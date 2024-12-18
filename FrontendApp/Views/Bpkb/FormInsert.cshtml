@@ -1,0 +1,75 @@
+﻿@model TrBpkbModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Input Data BPKB</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Insert" method="post">
+                        <div class="mb-3">
+                            <label for="AgreementNumber" class="form-label">Agreement Number</label>
+                            <input type="text" name="AgreementNumber" class="form-control" placeholder="Enter Agreement Number" value="@Model.AgreementNumber" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="BpkbNo" class="form-label">BPKB No</label>
+                            <input type="text" name="BpkbNo" class="form-control" placeholder="Enter BPKB No" value="@Model.BpkbNo" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="BranchId" class="form-label">Branch ID</label>
+                            <input type="text" name="BranchId" class="form-control" placeholder="Enter Branch ID" value="@Model.BranchId" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="PoliceNo" class="form-label">Police No</label>
+                            <input type="text" name="PoliceNo" class="form-control" placeholder="Enter Police No" value="@Model.PoliceNo" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="LocationId" class="form-label">Lokasi Penyimpanan</label>
+                            <select asp-for="LocationId" class="form-select">
+                                <option value="">-- Select Location --</option>
+                                @if (ViewBag.Locations != null && ViewBag.Locations is List<MsStorageLocation>)
+                                {
+                                    foreach (var loc in ViewBag.Locations as List<MsStorageLocation>)
+                                    {
+                                        <option value="@loc.LocationId">@loc.LocationName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="FakturNo" class="form-label">Faktur No</label>
+                            <input type="text" name="FakturNo" class="form-control" placeholder="Enter Faktur No" value="@Model.FakturNo" required />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="BpkbDate" class="form-label">BPKB Date</label>
+                                <input type="date" name="BpkbDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="FakturDate" class="form-label">Faktur Date</label>
+                                <input type="date" name="FakturDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="BpkbDateIn" class="form-label">BPKB Date In</label>
+                            <input type="date" name="BpkbDateIn" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

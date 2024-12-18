@@ -1,0 +1,14 @@
+# Visual Studio-specific
+.vscode/
+.vs/
+
+# Build artifacts
+bin/
+obj/
+
+# User-specific
+*.user
+*.suo
+
+# Logs
+*.log
